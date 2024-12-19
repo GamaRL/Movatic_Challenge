@@ -1,12 +1,9 @@
-import flask
 from flask import Flask, jsonify
 from flask_cors import cross_origin
 
 from services.station_service import get_station_information, get_station_status, get_all_stations
 
 app = Flask(__name__)
-
-app.config["DEBUG"] = True
 
 @app.route('/api/station', methods=['GET'])
 @cross_origin()
@@ -25,5 +22,6 @@ def api_get_station(station_id=''):
 
     return jsonify(station)
 
-app.run()
+if __name__ == '__main__':
+    app.run(debug=True)
 
