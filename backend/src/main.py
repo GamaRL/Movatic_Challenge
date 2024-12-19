@@ -18,6 +18,9 @@ def api_get_station(station_id=''):
     station_information = get_station_information(station_id)
     station_status = get_station_status(station_id)
 
+    if station_information is None or station_status is None:
+        return None, 404
+
     station = {'information': station_information, 'status': station_status}
 
     return jsonify(station)

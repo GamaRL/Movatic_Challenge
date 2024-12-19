@@ -1,5 +1,8 @@
 "use client"
 
+import ErrorMessage from "@/components/errorMessage";
+import LoadingSpin from "@/components/loadingSpin";
+import StationsTable from "@/components/stationsTable";
 import { StationGeneralInfo } from "@/services/responsesTypes";
 import { getAllStations } from "@/services/stationService";
 import Link from "next/link";
@@ -15,58 +18,35 @@ const Home = () => {
     getAllStations()
       .then((data) => {
         setStations(data);
-        setIsLoading(false);
       })
-      .catch((err) => {
+      .catch(() => {
         setError("Failed to load stations. Please try again.");
+      })
+      .finally(() => {
         setIsLoading(false);
       });
   }, []);
 
+  // Verify if is loading
   if (isLoading) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"></div>
-      </div>
-    );
+    return <LoadingSpin/>
   }
 
+  // Verify if there is an error
   if (error) {
-    return (
-      <div className="text-center py-10">
-        <p className="text-xl font-semibold text-red-500">{error}</p>
-      </div>
-    );
+    return <ErrorMessage message={error}/>
+  }
+
+  if (!stations) {
+    return <ErrorMessage message={'Unable to find stations'}/>
   }
 
   return (
-    <main className="p-6">
+    <main className="py-6 px-32">
       <h1 className="text-3xl font-bold text-center mb-6">Station List</h1>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full table-auto border-collapse border border-gray-200">
-          <thead>
-            <tr className="bg-gray-700">
-              <th className="px-4 py-2 border border-gray-300 text-left">Station ID</th>
-              <th className="px-4 py-2 border border-gray-300 text-left">Name</th>
-            </tr>
-          </thead>
-          <tbody>
-            {stations?.map((station) => (
-              <tr key={station.station_id} className="hover:bg-gray-600">
-                <td className="px-4 py-2 border border-gray-300">
-                  <Link
-                    href={`/${station.station_id}`}
-                    className="text-blue-600 hover:underline"
-                  >
-                    {station.station_id}
-                  </Link>
-                </td>
-                <td className="px-4 py-2 border border-gray-300">{station.name}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <StationsTable stations={stations}/>
       </div>
     </main>
   );
