@@ -1,18 +1,21 @@
 import flask
-from flask import request, jsonify
+from flask import Flask, jsonify
+from flask_cors import cross_origin
 
 from services.station_service import get_station_information, get_station_status, get_all_stations
 
-app = flask.Flask(__name__)
+app = Flask(__name__)
 
 app.config["DEBUG"] = True
 
 @app.route('/api/station', methods=['GET'])
+@cross_origin()
 def api_get_all_stations():
     stations_info = get_all_stations()
     return jsonify(stations_info)
 
 @app.route('/api/station/<station_id>', methods=['GET'])
+@cross_origin()
 def api_get_station(station_id=''):
 
     station_information = get_station_information(station_id)
