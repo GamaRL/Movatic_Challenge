@@ -5,6 +5,12 @@ interface StationsTableProps {
   stations: StationGeneralInfo[]
 }
 
+/**
+ * A component that helps to show a table with the following
+ * data for each station: station_id, name. Each row contains
+ * a link to navigate to another view that shows details of
+ * the station.
+ */
 const StationsTable = (props: StationsTableProps) => {
 
   const {stations} = props;

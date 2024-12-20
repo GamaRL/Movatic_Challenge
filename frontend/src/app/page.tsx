@@ -5,16 +5,20 @@ import LoadingSpin from "@/components/loadingSpin";
 import StationsTable from "@/components/stationsTable";
 import { StationGeneralInfo } from "@/services/responsesTypes";
 import { getAllStations } from "@/services/stationService";
-import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const Home = () => {
+/**
+ * Home page component
+ */
+const HomePage = () => {
+  // List of stations to show
   const [stations, setStations] = useState<StationGeneralInfo[] | null>(null);
 
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
+    // Fetch data from backend
     getAllStations()
       .then((data) => {
         setStations(data);
@@ -52,4 +56,4 @@ const Home = () => {
   );
 }
 
-export default Home;
+export default HomePage;

@@ -1,7 +1,6 @@
 import json
 from requests import get
 
-
 def get_all_stations():
     """
     Returns a list of all stations, each list entry is composed of the 'station_id'

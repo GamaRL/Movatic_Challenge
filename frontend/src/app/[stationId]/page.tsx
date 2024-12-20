@@ -8,6 +8,9 @@ import { getStationDetails } from "@/services/stationService";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
+/**
+ * Station details view
+ */
 const StationDetailsPage = () => {
 
   const { stationId }: { stationId: string } = useParams();

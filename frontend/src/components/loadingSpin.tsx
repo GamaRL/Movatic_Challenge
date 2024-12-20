@@ -1,3 +1,7 @@
+/**
+ * A component that helps to show a loading spin while data is
+ * still beeing loaded from de API.
+ */
 const LoadingSpin = () => {
 
   return (

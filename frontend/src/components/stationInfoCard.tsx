@@ -4,6 +4,10 @@ interface StationInfoCardProps {
   details: StationDetails
 }
 
+/**
+ * A component that helps to sum up the data related to a 
+ * specific station.
+ */
 const StationInfoCard = (props: StationInfoCardProps) => {
 
   const {details} = props;
