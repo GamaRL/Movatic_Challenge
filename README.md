@@ -61,8 +61,3 @@ docker compose up
 
 ## Reflection
 This prototype demonstrates the potential of integrating MDS data into a scalable web application. While functional, it provides a solid foundation for further development and refinement.
-
----
-
-Feel free to explore the codebase and reach out with any questions or feedback! ✉️
-
