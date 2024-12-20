@@ -11,7 +11,7 @@ This project is a prototype web application developed as part of the Movatic cod
 ## Technology Stack
 
 ### Frontend
-- **Next.js** ⚛️: A React.js framework used to create a modern and efficient user interface with support for server-side rendering, which improves page load speed and SEO.
+- **Next.js** ⚛️: A React.js framework used to create a modern and efficient user interface, it provides some settings like its default router, which is helpful for this application.
 - **Tailwind CSS** 🎨: Simplified the design process with utility-first CSS classes for building responsive components quickly, providing a consistent and clean UI without writing custom styles.
 - **TypeScript** 🔒: Provided type safety, reducing bugs and improving code maintainability by explicitly defining the data structures used throughout the application.
 
@@ -42,6 +42,7 @@ docker compose up
    - API: [http://localhost:5000](http://localhost:5000) 🌐
 
 > Ensure ports 3000 and 5000 are available on your machine before running the project.
+4. **API URL set up**: If you want to access the application within another computer, you must modify the `API_URL` environment variable to point to the ip address of the computer that is serving the backend. This variable is accessible from the `docker-compose.yaml` file.
 
 ## Future Work
 - **Pagination and Filtering** 📋:
